@@ -393,3 +393,4 @@ chrome-user-data
 .vscode
 *.swp
 *.swo
+client/public/images

@@ -1,8 +1,8 @@
 import { Request, Response, RequestHandler } from 'express';
+import { Resend } from 'resend';
 import { User, UserRole } from "../models/userModel";
 import { createHash } from 'crypto';
 import jwt from 'jsonwebtoken';
-import nodemailer from 'nodemailer';
 
 class UserController {
 
@@ -13,7 +13,7 @@ class UserController {
             
             const existingUser = await User.findOne({ email });
             if (existingUser) {
-                return res.status(400).json({ message: 'User already exists' });
+                return res.status(400).json({ status: "Bad Request", message: 'User already exists' });
             }
             
             const newUser = new User({ 
@@ -44,7 +44,7 @@ class UserController {
            
             const existingAdmin = await User.findOne({ email });
             if (existingAdmin) {
-                return res.status(400).json({ message: 'User already exists' });
+                return res.status(400).json({ status: "Bad Request", message: 'User already exists' });
             }
             
 
@@ -78,11 +78,11 @@ class UserController {
             const user = await User.findOne({ email });
             
             if (!user) {
-                return res.status(404).json({ message: 'User not found' });
+                return res.status(404).json({ status: "Not Found", message: 'User not found' });
             }
             
             if (user.password !== createHash("md5").update(password).digest("hex")) {
-                return  res.status(401).json({message: 'Password is wrong' });;
+                return  res.status(401).json({ status: "Unauthorized", message: 'Password is wrong' });;
             }
             
 
@@ -107,11 +107,15 @@ class UserController {
             const admin = await User.findOne({ email });
             
             if (!admin) {
-                return res.status(404).json({ message: 'User not found' });
+                return res.status(404).json({ status: "Not Found", message: 'Admin not found' });
             }
             
+            if (admin.role != UserRole.Admin) {
+                return res.status(401).json({ status: "Unauthorized", message: "You don't have permission" });
+            }
+
             if (admin.password !== createHash("md5").update(password).digest("hex")) {
-                return  res.status(401).json({message: 'Password is wrong' });;
+                return  res.status(401).json({ status: "Unauthorized", message: 'Password is wrong' });;
             }
             
 
@@ -134,10 +138,10 @@ class UserController {
             const user = await User.findById(res.locals.user._id);
             
             if (!user) {
-                return res.status(404).json({ message: 'User not found' });
+                return res.status(404).json({ status: "Not Found", message: 'User not found' });
             }
           
-            return res.status(200).json({ user });
+            return res.status(200).json( {status: "succes", user: user });
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: 'Internal server error' });
@@ -148,39 +152,31 @@ class UserController {
     static forgotPassword: RequestHandler = async (req: Request, res : Response): Promise<any> => {
 
         try {
-            const transporter = nodemailer.createTransport({
-                host: 'smtp.outlook.com',
-                port: 587,
-                secure: false,
-                auth: {
-                    user: process.env.AUTH_EMAIL_USER,
-                    pass: process.env.AUTH_EMAIL_PASS,
-                },
-            });
-            
             const { email } = req.body;
 
             const user = await User.findOne({ email });
             if (!user) {
-                return res.status(404).json({ message: 'User not found' });
+                return res.status(404).json({ status: "Not Found", message: 'User not found' });
             }
 
-            
             const resetToken = jwt.sign(
                 { email }, 
                 process.env.JWT_SECRET as string,  
                 { expiresIn: process.env.JWT_FORGOT_TOKEN_EXPIRES_IN as string }
             );
+
             const resetLink = `http://localhost:8080/user/reset-password/${resetToken}`;
 
-            const mailOptions = {
-                from: process.env.AUTH_EMAIL_USER,
+            const resend = new Resend(process.env.RESEND_API_KEY);
+
+            resend.emails.send({
+                from: 'onboarding@resend.dev',
                 to: email,
                 subject: 'Password Reset',
-                html: `<p>Please click the following link to reset your password:</p><p>${resetLink}</p>`,
-            };
+                html: `<p>Please click the following link to reset your password:</p><p>${resetLink}</p>`
+            });
+            
 
-            await transporter.sendMail(mailOptions);
             return res.status(200).json({ status: 'success', message: 'Password reset link sent to your email' });
 
         } catch (error) {
@@ -210,7 +206,7 @@ class UserController {
             const user = await User.findOne({ email: email });
 
             if (!user) {
-                return res.status(404).json({ message: 'User not found' });
+                return res.status(404).json({ status: "Not Found", message: 'User not found' });
             }
 
             user.password =  createHash("md5").update(password).digest("hex");

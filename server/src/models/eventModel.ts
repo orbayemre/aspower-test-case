@@ -2,6 +2,7 @@ import { Schema, model, Document } from 'mongoose';
 
 //Konuşmacı Arayüzü
 interface Speaker {
+  _id: string;
   name: string;
   bio: string;
   image: string;
@@ -34,15 +35,15 @@ interface IEvent extends Document {
 //Konuşmacı Şeması
 const speakerSchema = new Schema<Speaker>({
   name: { type: String, required: true },
-  bio: { type: String, required: true },
-  image: { type: String , default: null},
+  bio: { type: String, default: null},
+  image: { type: String, default: null },
   socialLinks: { type: [String], default: [] },
 });
 
 //Oturum Şeması
 const sessionSchema = new Schema<Session>({
   title: { type: String, required: true },
-  description: { type: String, required: true },
+  description: { type: String, default: null},
   speaker: { type: speakerSchema, required: true },
   startTime: { type: Date, required: true },
   endTime: { type: Date, required: true },
@@ -51,14 +52,13 @@ const sessionSchema = new Schema<Session>({
 //Etkinlik Şeması
 const eventSchema = new Schema<IEvent>({
   title: { type: String, required: true },
-  description: { type: String, required: true },
+  description: { type: String, default: null },
   location: { type: String, required: true },
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   sessions: { type: [sessionSchema], required: true },
   tags: { type: [String], default: [] },
   categories: { type: [String], default: [] },
-  registrationLink: { type: String, required: true },
   isOnline: { type: Boolean, default: false },
 }, { timestamps: true });
 
