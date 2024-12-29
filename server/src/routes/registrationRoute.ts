@@ -8,5 +8,6 @@ const router = express.Router();
 
 router.post('/register',authMiddleware, RegistrationController.registerEvent);
 router.get('/get-registration-number/:id', RegistrationController.getRegistrationNumberByEventId);
+router.get('/get-registrations',authMiddleware, RegistrationController.getRegistrationsByUserId);
 
 export default router;

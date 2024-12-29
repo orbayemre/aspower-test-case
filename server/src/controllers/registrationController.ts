@@ -57,6 +57,25 @@ class RegistrationController{
         }
     }
 
+    
+    static getRegistrationsByUserId: RequestHandler = async (req: Request, res : Response): Promise<any> => {
+        try {
+
+            const existingUser = await User.findById(res.locals.user._id);
+            if (!existingUser) {
+                return res.status(401).json({ status: "Unauthorized", message: 'Unauthorized action' });
+            }
+            
+            const registrations = await Registration.find({user:res.locals.user._id});
+           
+            res.status(200).json({ status: 'success', registrations: registrations}); 
+
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    }
+
 }
 
 export default RegistrationController;

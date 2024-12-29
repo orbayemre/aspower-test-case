@@ -1,0 +1,803 @@
+
+
+html,body,*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.authContainer{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 99vh;
+}
+.authBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+    min-height: 500px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.041);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.authBox.userRegisterBox{
+    min-width: 600px;
+    min-height: 600px;
+}
+.authBox .header{
+    font-size: 26px;
+    margin-top: 80px;
+}
+.authBox .formBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 65%;
+    padding-top: 20px;
+
+}
+.authBox .formBody .formField{
+    margin: 5px 0px;
+    width: 100%;
+}
+.authBox .formBody .submitButton{
+    margin-top: 10px;
+    padding: 6px 0px;
+    width: 100%;
+    background-color: green;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.authBox .formBody .submitButton:hover{
+    
+    background-color: white;
+    color: green;
+    border: 1px solid green;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.authBox .formBody .needAccount{
+    margin-top: 10px;
+}
+.authBox .formBody .needAccount a{
+    color: black;
+    font-size: 16px;
+}
+.authBox .formBody .alreadyAccount{
+    margin-top: 10px;
+}
+.authBox .formBody .alreadyAccount a{
+    color: black;
+    font-size: 16px;
+}
+.authBox .formBody .validationMessage{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 14;
+    color: rgb(255, 105, 105);
+}
+
+
+.mailInput .formInput{
+    padding: 5px;
+    border-radius: 5px;
+    outline-width: 0px;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 3px;
+}
+.textInput .formInput{
+    padding: 5px;
+    border-radius: 5px;
+    outline-width: 0px;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 3px;
+}
+.textArea .formInput{
+    padding: 5px;
+    border-radius: 5px;
+    outline-width: 0px;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 3px;
+    max-width: 400px;
+}
+.passwordInput{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    outline-width: 0px;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.passwordInput .formInput{
+    padding: 5px;
+    border-radius: 5px;
+    outline-width: 0px;
+    font-size: 14px;
+    width: 90%;
+    margin-top: 3px;
+}
+.passwordInput .passwordEye{
+    width: 10%;
+
+}
+.passwordInput .passwordEye .eyeIcon{
+    width: 70%;
+}
+
+
+
+.navBar{
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 20px 10px;
+}
+.navBar .authNavbarBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px; 
+    margin-top: 30px;
+    border: 2px solid rgba(0, 0, 0, 0.377);
+    border-radius: 20px;
+    padding: 10px 20px;
+    gap: 20px;
+}
+.navBar .authNavbarBox .userBox{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 3px;
+    padding: 5px;
+    cursor: pointer;
+}
+.navBar .authNavbarBox .userBox .name{
+    font-size: 16px;
+    font-weight: bold;
+}
+.navBar .authNavbarBox .userBox .email{
+    font-size: 12px;
+}
+.navBar .authNavbarBox .logoutBox{
+    cursor: pointer;
+}
+.navBar .authNavbarBox .loginBox{
+    margin:10px 30px; 
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+
+.eventsContainer{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    max-width: 1600px;
+    margin: auto;
+}
+.eventsContainer .eventsBox{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.eventsContainer .eventsBox .header{
+    margin-bottom: 40px;
+}
+.eventsContainer .eventsBox .header h1{
+    font-size: 40px;
+}
+
+.eventsBody{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+.eventsBody .eventContent{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    border: 2px solid green;
+    border-radius: 20px;
+    padding: 10px 50px;
+}
+.eventsBody .eventContent .eventHeader{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.eventsBody .eventContent .eventHeader .headerLeft{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.eventsBody .eventContent .eventHeader .headerLeft .eventTitle{
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+.eventsBody .eventContent .eventHeader .headerLeft .eventDesc{
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.eventsBody .eventContent .eventHeader .headerLeft .eventLoc{
+    color: green;
+}
+.eventsBody .eventContent .eventHeader .headerLeft .eventLoc b{
+    color: black;
+}
+
+
+.eventsBody .eventContent .eventHeader .headerRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.eventsBody .eventContent .eventHeader .headerRight .date{
+    font-size: 24px;
+    font-weight: bold;
+}
+.eventsBody .eventContent .eventHeader .headerRight .registerButton{
+    padding: 5px 20px;
+    border: 2px solid green;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s all;
+}
+.eventsBody .eventContent .eventHeader .headerRight .registerButton:hover{
+
+    background-color: white;
+    color: green;
+}
+.eventsBody .eventContent .eventHeader .headerRight .registered{
+    font-weight: bold;
+    font-size: 16px;
+    color: green;
+}
+
+.eventsBody .eventContent .eventSessions{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+.eventsBody .eventContent .eventSessions .sessionsHeader{
+    margin: 20px 0px 10px 0px;
+}
+.eventsBody .eventContent .eventSessions .sessionsHeader h2{
+    font-size: 22px;
+}
+
+.eventsBody .eventContent .eventSessions .sessionsBody{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 50px;
+}
+
+.sessionsBody .sessionContent{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 20px;
+}
+.sessionsBody .sessionContent span{
+   font-size: 18px;
+}
+.sessionsBody .sessionContent .sessionLeft{
+    width: 20%;
+}
+.sessionsBody .sessionContent .sessionLeft .speakerImage{
+    width: 100%;
+}
+.sessionsBody .sessionContent .sessionLeft .speakerImage img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+.sessionsBody .sessionContent .sessionRight{
+    width: 80%;
+    margin-top: 20px;
+}
+.sessionsBody .sessionContent .sessionRight .sessionHeader{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+.sessionsBody .sessionContent .sessionRight .sessionHeader .text{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.sessionsBody .sessionContent .sessionRight .sessionHeader .text .sessionTitle{
+    font-size: 22px;
+}
+
+.sessionsBody .sessionContent .sessionRight .sessionHeader .date{
+    margin-right: 100px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sessionsBody .sessionContent .sessionRight .speaker .speakerName{
+    font-size: 18px;
+}
+
+
+
+.adminPanelContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    max-width: 1600px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.adminPanelContainer .createEventBox{
+    width: 80%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 50px;
+}
+.adminPanelContainer .createEventBox .createEventButton{
+    padding: 10px 30px;
+    border: 2px solid green;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.adminPanelContainer .createEventBox .createEventButton:hover{
+    background-color: white;
+    color: green;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+}
+
+.adminPanelContainer .eventsBox{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding-left: 50px;
+    margin-top: 20px;
+}
+.adminPanelContainer .eventsBox .eventsHeader h2{
+    font-size: 36px;
+}
+
+.adminPanelContainer .eventsBox .eventsBody{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-top: 10px;
+}
+
+.adminPanelContainer .eventsBox .eventsBody .eventBox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border: 2px solid green;
+    border-radius: 10px;
+}
+.adminPanelContainer .eventsBox .eventsBody .eventBox .eventInfo{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 100px;
+}
+.adminPanelContainer .eventsBox .eventsBody .eventBox .eventInfo .eventId{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.adminPanelContainer .eventsBox .eventsBody .eventBox .eventInfo .eventId .label{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.adminPanelContainer .eventsBox .eventsBody .eventBox .eventInfo .eventTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.adminPanelContainer .eventsBox .eventsBody .eventBox .eventInfo .eventTitle .label{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.adminPanelContainer .eventsBox .eventsBody .eventBox .eventEdit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-right: 10px;
+}
+
+.adminPanelContainer .eventsBox .eventsBody .eventBox .eventEdit .eventUpdate{
+    padding: 10px 20px;
+    background-color: darkorange;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s all;
+    font-weight: bold;
+    border: 2px solid darkorange;
+}
+.adminPanelContainer .eventsBox .eventsBody .eventBox .eventEdit .eventUpdate:hover{
+    background-color: white;
+    color: darkorange;
+}
+
+.adminPanelContainer .eventsBox .eventsBody .eventBox .eventEdit .eventDelete{
+    padding: 10px 20px;
+    background-color: red;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s all;
+    font-weight: bold;
+    border: 2px solid red;
+}
+.adminPanelContainer .eventsBox .eventsBody .eventBox .eventEdit .eventDelete:hover{
+    background-color: white;
+    color: red;
+}
+
+
+
+.createEventContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    max-width: 1600px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+.createEventContainer .createEvenForm{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    border: 2px solid green;
+    border-radius: 15px;
+}
+.createEventContainer  .createEvenForm .createEventFormHeader{
+    margin: 20px 0px;
+}
+.createEventContainer  .createEvenForm .formBody{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+.createEventContainer  .createEvenForm .formBody .formBox1{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+.createEventContainer  .createEvenForm .formBody .formBox1 .left{
+    width: 50%;
+}
+.createEventContainer  .createEvenForm .formBody .formBox1 .left .formField{
+    width: 100%;
+    margin: 20px 0px;
+}
+.createEventContainer  .createEvenForm .formBody .formBox1 .left .formField textarea{
+    max-width: 100%;
+}
+
+.createEventContainer  .createEvenForm .formBody .formBox1 .right{
+    width: 50%;
+    margin-left: 20px;
+}
+.createEventContainer  .createEvenForm .formBody .formBox1 .right .formField{
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.createEventContainer  .createEvenForm .formBody .formBox1 .right .bottom{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.createEventContainer  .createEvenForm .formBody .sessionsBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.createEventContainer  .createEvenForm .formBody .sessionsBox .addNewSession{
+    width: 30%;
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+    padding: 10px 0px;
+    background-color: green;
+    border: 2px solid green;
+    color: white;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.createEventContainer  .createEvenForm .formBody .sessionsBox .addNewSession:hover{
+    background-color: white;
+    color: green;
+}
+.createEventContainer  .createEvenForm .formBody .sessionsBox .formSessions{
+    width: 100%;
+}
+
+
+
+
+.updateEventContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    max-width: 1600px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+.updateEventContainer .updateEvenForm{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    border: 2px solid green;
+    border-radius: 15px;
+}
+.updateEventContainer  .updateEvenForm .updateEventFormHeader{
+    margin: 20px 0px;
+}
+.updateEventContainer  .updateEvenForm .formBody{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+.updateEventContainer  .updateEvenForm .formBody .formBox1{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+.updateEventContainer  .updateEvenForm .formBody .formBox1 .left{
+    width: 50%;
+}
+.updateEventContainer  .updateEvenForm .formBody .formBox1 .left .formField{
+    width: 100%;
+    margin: 20px 0px;
+}
+.updateEventContainer  .updateEvenForm .formBody .formBox1 .left .formField textarea{
+    max-width: 100%;
+}
+
+.updateEventContainer  .updateEvenForm .formBody .formBox1 .right{
+    width: 50%;
+    margin-left: 20px;
+}
+.updateEventContainer  .updateEvenForm .formBody .formBox1 .right .formField{
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.updateEventContainer  .updateEvenForm .formBody .formBox1 .right .bottom{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.updateEventContainer  .updateEvenForm .formBody .sessionsBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.updateEventContainer  .updateEvenForm .formBody .sessionsBox .addNewSession{
+    width: 30%;
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+    padding: 10px 0px;
+    background-color: green;
+    border: 2px solid green;
+    color: white;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.updateEventContainer  .updateEvenForm .formBody .sessionsBox .addNewSession:hover{
+    background-color: white;
+    color: green;
+}
+.updateEventContainer  .updateEvenForm .formBody .sessionsBox .formSessions{
+    width: 100%;
+}
+
+.formSessions .formSessionBox{
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-bottom: 20px;
+}
+.formSessions .formSessionBox .formSessionHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.formSessions .formSessionBox .formSessionHeader span{
+    font-size: 18px;
+    font-weight: bold;
+}
+.formSessions .formSessionBox .formSessionHeader .deleteText{
+    color: red;
+    cursor: pointer;
+}
+.formSessions .formSessionBox .formSession{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-top: 10px;
+}
+.formSessions .formSessionBox .formSession .formB{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap:30px;
+    margin-bottom: 10px;
+}
+.formSessions .formSessionBox .formSession .formB .formField{
+    width: 50%;
+}
+.formSessions .formSessionBox .formSession .formB2{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap:30px;
+    margin-bottom: 10px;
+}
+.formSessions .formSessionBox .formSession .formB2 .right{
+    width: 50%;
+}
+.formSessions .formSessionBox .formSession .formB2 .left{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.formSessions .formSessionBox .formSession .formB3 .formField .imageUpload{
+    margin-top: 5px;    
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    gap:30px;
+    margin-bottom: 10px;
+}
+.formSessions .formSessionBox .formSession .formB3 .speakerImg{
+    width: 200px;
+}
+
+
+.createEventContainer  .createEvenForm .formBody .saveButton{
+    width: 100%;
+    padding: 10px 0px ;
+    text-align: center;
+    background-color: green;
+    font-size: 20px;
+    border: 2px solid green;
+    border-radius: 10px;
+    margin: 10px 0px 30px 0px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.createEventContainer  .createEvenForm .formBody .saveButton:hover{
+    background-color: white;
+    color: green;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.updateEventContainer  .updateEvenForm .formBody .saveButton{
+    width: 100%;
+    padding: 10px 0px ;
+    text-align: center;
+    background-color: green;
+    font-size: 20px;
+    border: 2px solid green;
+    border-radius: 10px;
+    margin: 10px 0px 30px 0px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.updateEventContainer  .updateEvenForm .formBody .saveButton:hover{
+    background-color: white;
+    color: green;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
